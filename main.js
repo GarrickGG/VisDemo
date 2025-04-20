@@ -43,7 +43,7 @@ Promise.all([
   let currentYear = years[0];
 
   const projection = d3.geoNaturalEarth1()
-    .scale(300)
+    .scale(250)
     .translate([width / 2, height / 2]);
 
   const deathRateMap = {};

@@ -1,0 +1,15 @@
+{
+    "cleanUrls": true,
+    "rewrites": [
+      { "source": "/data/(.*)", "destination": "/data/$1" }
+    ],
+    "headers": [
+      {
+        "source": "/data/(.*)",
+        "headers": [
+          { "key": "Access-Control-Allow-Origin", "value": "*" }
+        ]
+      }
+    ]
+  }
+  

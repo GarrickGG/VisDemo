@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Global PM2.5 Map</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    #legend-container {
+      position: absolute;
+      bottom: 20px;
+      left: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      font-size: 14px;
+    }
+
+    .legend-tick-label {
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+
+    #slider-instruction {
+      font-size: 14px;
+      color: #444;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    #disease-instruction {
+      font-size: 14px;
+      color: #444;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    #annotation-panel {
+      max-width: 320px;
+      background-color: #fff8f8;
+      padding: 16px;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      font-size: 18px;
+      line-height: 1.4;
+    }
+
+    #annotation-panel h4 {
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+
+    #source p, #description p {
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h2 id="title">How Air Pollution Affects Health Over Time</h2>
+
+    <div id="map"></div>
+
+    </div>
+    
+    <div style="display: flex; justify-content: center; align-items: flex-start; gap: 40px; margin-top: 20px;">
+        <div id="annotation-panel" style="
+          background-color: white;
+          border-radius: 10px;
+          padding: 16px;
+          box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+          font-size: 18px;
+          width: 320px;
+        ">
+          <h4> Highlighted Insights</h4>
+          <ul>
+            <li><strong>India</strong> consistently shows high PM2.5 and high death rates in heart disease and stroke.</li>
+            <li><strong>Niger</strong> has very high acute respiratory infection death rates but lower pollution, likely due to healthcare access.</li>
+            <li><strong>China</strong> shows declining PM2.5 and lung cancer death rate in later years.</li>
+            <li><strong>Iceland</strong> maintains low pollution and low mortality across all causes, acting as a benchmark.</li>
+          </ul>
+        </div>
+      
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
+            <div id="disease-instruction" style="text-align: center; font-weight: 600;">
+            Use the dropdown to select a disease:
+            </div>
+        
+            <select id="diseaseSelect" style="margin: 0 auto;">
+            <option value="pm25">PM2.5 Concentration</option>
+            <option value="lung">Lung Cancer</option>
+            <option value="copd">COPD</option>
+            <option value="heart">Heart Disease</option>
+            <option value="stroke">Stroke</option>
+            <option value="acute">Acute Infections</option>
+            </select>
+        
+            <div id="slider-container" style="text-align: center;">
+            <div id="slider-instruction" style="font-weight: 600;">Drag the slider below to choose a year:</div>
+            <input id="yearSlider" type="range" style="margin-top: 4px;" />
+            <div id="yearLabel" style="margin-top: 4px;">2010</div>
+            </div>
+        
+            <div>
+            <button id="playBtn" style="margin-top: 4px;">
+                <svg xmlns="http://www.w3.org/2000/svg" class="play-icon" viewBox="0 0 24 24" fill="white" width="16" height="16">
+                <path d="M8 5v14l11-7z"/>
+                </svg>
+                Play
+            </button>
+            </div>
+        </div>
+  
+    <div id="description-container">
+      <div id="description">
+        <h3>About this visualization</h3>
+        <p>
+          This interactive map shows the global distribution of <strong>PM2.5 concentration</strong> and the <strong>death rates of five major diseases</strong> over time:
+          <ul>
+            <li>Acute Respiratory Infections</li>
+            <li>Chronic Obstructive Pulmonary Disease (COPD)</li>
+            <li>Ischemic Heart Disease</li>
+            <li>Stroke</li>
+            <li>Lung Cancer</li>
+          </ul>
+          Use the dropdown to select a disease, and use the slider or play button to explore how death rates and air pollution change from year to year.
+          <br><br>
+          This visualization helps explore the relationship between air pollution (PM2.5) and mortality trends across countries.
+        </p>
+        <p>📊 Data Source:
+            <a href="https://www.who.int/data/gho/data/themes/topics/topic-details/GHO/ambient-air-pollution" target="_blank" rel="noopener noreferrer">
+              WHO
+            </a>
+          </p>
+      </div>
+      </div>
+
+
+  </div>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
